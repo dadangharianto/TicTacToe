@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+      }
+      .board {
+        display: grid;
+        grid-template-columns: repeat(3, 100px);
+        grid-gap: 5px;
+      }
+      .cell {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        cursor: pointer;
+        background-color: darkmagenta;
+        color: rgb(222, 116, 230);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      button {
+        font-size: 18px;
+        padding: 10px 20px;
+        cursor: pointer;
+        margin-top: 10px;
+        background-color: deeppink;
+        color: aquamarine;
+        border-radius: 1.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="board">
+      <div class="cell" onclick="makeMove(0)"></div>
+      <div class="cell" onclick="makeMove(1)"></div>
+      <div class="cell" onclick="makeMove(2)"></div>
+      <div class="cell" onclick="makeMove(3)"></div>
+      <div class="cell" onclick="makeMove(4)"></div>
+      <div class="cell" onclick="makeMove(5)"></div>
+      <div class="cell" onclick="makeMove(6)"></div>
+      <div class="cell" onclick="makeMove(7)"></div>
+      <div class="cell" onclick="makeMove(8)"></div>
+    </div>
+    <button onclick="resetGame()">Reset Game</button>
+    <script src="tictactoe.js"></script>
+  </body>
+</html>
