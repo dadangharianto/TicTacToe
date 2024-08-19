@@ -30,6 +30,9 @@ function makeMove(cellIndex) {
       currentPlayer = currentPlayer === "X" ? "O" : "X";
     }
   }
+
+  var click_sound = document.getElementById("click-sound");
+  click_sound.play();
 }
 
 // Function to update the cell in the UI
@@ -53,7 +56,31 @@ function checkDraw() {
 
 // Function to announce the winner
 function announceWinner() {
-  alert(`Player ${currentPlayer} wins!`);
+  //   alert(`Player ${currentPlayer} wins!`);
+  showCustomAlert(`Player ${currentPlayer} wins!`);
+
+  var bg_sound = document.getElementById("bg-sound");
+  if (bg_sound) {
+    bg_sound.pause(); // Pause the background sound
+    bg_sound.currentTime = 0; // Reset the sound to the beginning
+  }
+  var win_sound = document.getElementById("win-sound");
+  win_sound.play();
+  generateParticlesContinuously();
+}
+
+// Function to show custom alert
+function showCustomAlert(message) {
+  var alertBox = document.getElementById("custom-alert");
+  var alertMessage = document.getElementById("alert-message");
+
+  alertMessage.textContent = message;
+  alertBox.style.display = "block";
+
+  // Hide the alert after 3 seconds
+  setTimeout(() => {
+    alertBox.style.display = "none";
+  }, 3000);
 }
 
 // Function to announce a draw
@@ -67,4 +94,12 @@ function resetGame() {
   currentPlayer = "X";
   gameActive = true;
   document.querySelectorAll(".cell").forEach((cell) => (cell.textContent = ""));
+
+  var bg_sound = document.getElementById("bg-sound");
+  bg_sound.play(); // Pause the background sound
+  var win_sound = document.getElementById("win-sound");
+  if (win_sound) {
+    win_sound.pause(); // Pause the background sound
+    win_sound.currentTime = 0; // Reset the sound to the beginning
+  }
 }

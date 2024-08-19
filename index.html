@@ -43,6 +43,51 @@
         color: rgb(228, 255, 246);
         border-radius: 1.5em;
       }
+
+      button:hover {
+        font-size: 20px;
+        background-color: fuchsia;
+      }
+
+      .notification {
+        display: none; /* Hidden by default */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #444;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+      }
+
+      .notification p {
+        margin: 0;
+        font-size: 1.2rem;
+        text-align: center;
+      }
+
+      .particle {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background-color: yellow;
+        border-radius: 50%;
+        opacity: 0;
+        animation: particleAnimation 3s forwards;
+      }
+
+      @keyframes particleAnimation {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(var(--x), var(--y)) scale(1);
+          opacity: 0;
+        }
+      }
     </style>
   </head>
   <body>
@@ -58,6 +103,32 @@
       <div class="cell" onclick="makeMove(8)"></div>
     </div>
     <button onclick="resetGame()">Reset Game</button>
+
+    <div class="notification" id="custom-alert">
+      <p id="alert-message"></p>
+    </div>
+
     <script src="tictactoe.js"></script>
+
+    <div>
+      <audio controls autoplay id="bg-sound">
+        <source src="media/HTML - Riot.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      <audio
+        id="click-sound"
+        src="media/Wooden Bat Hits Baseball Run.mp3"
+        preload="auto"
+      ></audio>
+      <audio
+        id="win-sound"
+        src="media/we are the champion.mp3"
+        preload="auto"
+      ></audio>
+    </div>
+
+    <button class="start-btn">Start Winner Animation</button>
+    <div class="winner">Congratulations, You Win!</div>
+    <script src="partikel.js"></script>
   </body>
 </html>
