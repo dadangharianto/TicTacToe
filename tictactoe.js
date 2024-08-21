@@ -56,10 +56,10 @@ function checkDraw() {
 
 // Function to announce the winner
 function announceWinner() {
-  //   alert(`Player ${currentPlayer} wins!`);
   showCustomAlert(`Player ${currentPlayer} wins!`);
 
   var bg_sound = document.getElementById("bg-sound");
+
   if (bg_sound) {
     bg_sound.pause(); // Pause the background sound
     bg_sound.currentTime = 0; // Reset the sound to the beginning
@@ -77,10 +77,10 @@ function showCustomAlert(message) {
   alertMessage.textContent = message;
   alertBox.style.display = "block";
 
-  // Hide the alert after 3 seconds
-  setTimeout(() => {
-    alertBox.style.display = "none";
-  }, 3000);
+  //   // Hide the alert after 3 seconds
+  //   setTimeout(() => {
+  //     alertBox.style.display = "none";
+  //   }, 3000);
 }
 
 // Function to announce a draw
@@ -102,6 +102,11 @@ function resetGame() {
     win_sound.pause(); // Pause the background sound
     win_sound.currentTime = 0; // Reset the sound to the beginning
   }
+
+  var alertBox = document.getElementById("custom-alert");
+  alertBox.style.display = "none";
+
+  resetParticles();
 }
 
 // Function to toggle mute and unmute
@@ -122,6 +127,3 @@ function toggleMute() {
     muteButton.textContent = "Unmute Music"; // Change button text
   }
 }
-
-// Event listener for the mute button
-// document.getElementById("mute-button").addEventListener("click", toggleMute);

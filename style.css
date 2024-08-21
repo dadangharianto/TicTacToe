@@ -1,0 +1,117 @@
+header {
+  display: flex;
+  /* flex-direction: column; */
+  /* align-items: center; */
+  justify-content: center;
+  /* height: 100vh; */
+  /* margin: 0; */
+  font-family: Arial, sans-serif;
+  background-color: #171717;
+  color: rgb(75, 214, 214);
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #171717;
+}
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-gap: 5px;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  cursor: pointer;
+  background-color: rgb(17, 142, 195);
+  color: rgb(196, 242, 136);
+  font-family: "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial,
+    sans-serif;
+}
+
+.cell:hover {
+  background-color: rgb(16, 203, 228);
+}
+
+button {
+  position: relative;
+  width: 100px;
+  height: 70px;
+  font-size: 18px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: deeppink;
+  color: rgb(228, 255, 246);
+  border-radius: 1.5em;
+}
+
+.reset-button {
+  top: 10%;
+}
+
+.mute-button {
+  top: 10%;
+  left: 40%;
+}
+
+button:hover {
+  font-size: 20px;
+  background-color: fuchsia;
+}
+
+.notification {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #444;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.notification p {
+  margin: 0;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: yellow;
+  border-radius: 50%;
+  opacity: 0;
+  animation: particleAnimation 3s forwards;
+}
+
+@keyframes particleAnimation {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(1);
+    opacity: 0;
+  }
+}
+
+.audio {
+  position: absolute;
+  top: 80%;
+  left: 5%;
+}

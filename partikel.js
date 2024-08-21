@@ -1,30 +1,4 @@
-// function createParticle(x, y) {
-//   const particle = document.createElement("div");
-//   particle.classList.add("particle");
-//   particle.style.left = `${x}px`;
-//   particle.style.top = `${y}px`;
-
-//   const xMovement = (Math.random() - 0.5) * 300; // Random x movement
-//   const yMovement = (Math.random() - 0.5) * 300; // Random y movement
-//   particle.style.setProperty("--x", `${xMovement}px`);
-//   particle.style.setProperty("--y", `${yMovement}px`);
-
-//   document.body.appendChild(particle);
-
-//   // Remove the particle after animation ends
-//   particle.addEventListener("animationend", () => {
-//     particle.remove();
-//   });
-// }
-
-// function generateParticles() {
-//   const numParticles = 100;
-//   const centerX = window.innerWidth / 2;
-//   const centerY = window.innerHeight / 2;
-//   for (let i = 0; i < numParticles; i++) {
-//     createParticle(centerX, centerY);
-//   }
-// }
+let particleInterval;
 
 // Function to generate a random color in RGB format
 function getRandomColor() {
@@ -81,11 +55,22 @@ function createParticle() {
 
 // Function to continuously generate particles
 function generateParticlesContinuously() {
-  setInterval(createParticle, 10); // Generate a particle every 100ms
+  particleInterval = setInterval(createParticle, 10); // Generate a particle every 100ms
 }
 
-// Function to handle the start button click
-// document.querySelector(".start-btn").addEventListener("click", () => {
-//   document.querySelector(".winner").style.display = "block";
-//   generateParticlesContinuously();
-// });
+// Function to stop particle generation
+function stopParticles() {
+  clearInterval(particleInterval); // Stops the particle generation
+}
+
+// Function to remove all existing particles from the screen
+function clearParticles() {
+  const particles = document.querySelectorAll(".particle");
+  particles.forEach((particle) => particle.remove());
+}
+
+// Function to reset the particle animation
+function resetParticles() {
+  stopParticles(); // Stop generating new particles
+  clearParticles(); // Remove all existing particles
+}

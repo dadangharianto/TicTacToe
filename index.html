@@ -3,143 +3,77 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Dadang Harianto" />
     <title>Tic Tac Toe</title>
-    <style>
-      body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: #171717;
-      }
-      .board {
-        display: grid;
-        grid-template-columns: repeat(3, 100px);
-        grid-gap: 5px;
-      }
-      .cell {
-        width: 100px;
-        height: 100px;
-        border: 1px solid black;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 50px;
-        cursor: pointer;
-        background-color: rgb(17, 142, 195);
-        color: rgb(196, 242, 136);
-        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-          "Lucida Sans", Arial, sans-serif;
-      }
-      button {
-        font-size: 18px;
-        padding: 10px 20px;
-        cursor: pointer;
-        margin-top: 10px;
-        background-color: deeppink;
-        color: rgb(228, 255, 246);
-        border-radius: 1.5em;
-      }
-
-      button:hover {
-        font-size: 20px;
-        background-color: fuchsia;
-      }
-
-      .notification {
-        display: none; /* Hidden by default */
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: #444;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        z-index: 1000;
-      }
-
-      .notification p {
-        margin: 0;
-        font-size: 1.2rem;
-        text-align: center;
-      }
-
-      .particle {
-        position: absolute;
-        width: 8px;
-        height: 8px;
-        background-color: yellow;
-        border-radius: 50%;
-        opacity: 0;
-        animation: particleAnimation 3s forwards;
-      }
-
-      @keyframes particleAnimation {
-        0% {
-          transform: scale(1);
-          opacity: 1;
-        }
-        100% {
-          transform: translate(var(--x), var(--y)) scale(1);
-          opacity: 0;
-        }
-      }
-
-      .audio {
-        position: absolute;
-        top: 80%;
-        left: 5%;
-      }
-    </style>
+    <link href="media/icons8-tic-tac-toe.png" type="image/x-icon" rel="icon" />
+    <link rel="stylesheet" href="style.css" />
+    <style></style>
   </head>
   <body>
-    <div class="board">
-      <div class="cell" onclick="makeMove(0)"></div>
-      <div class="cell" onclick="makeMove(1)"></div>
-      <div class="cell" onclick="makeMove(2)"></div>
-      <div class="cell" onclick="makeMove(3)"></div>
-      <div class="cell" onclick="makeMove(4)"></div>
-      <div class="cell" onclick="makeMove(5)"></div>
-      <div class="cell" onclick="makeMove(6)"></div>
-      <div class="cell" onclick="makeMove(7)"></div>
-      <div class="cell" onclick="makeMove(8)"></div>
-    </div>
-    <button onclick="resetGame()">Reset Game</button>
+    <header>
+      <h1>Tic Tac Toe</h1>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="board">
+        <div class="cell" onclick="makeMove(0)"></div>
+        <div class="cell" onclick="makeMove(1)"></div>
+        <div class="cell" onclick="makeMove(2)"></div>
+        <div class="cell" onclick="makeMove(3)"></div>
+        <div class="cell" onclick="makeMove(4)"></div>
+        <div class="cell" onclick="makeMove(5)"></div>
+        <div class="cell" onclick="makeMove(6)"></div>
+        <div class="cell" onclick="makeMove(7)"></div>
+        <div class="cell" onclick="makeMove(8)"></div>
+      </div>
+      <button onclick="resetGame()" class="reset-button">Reset Game</button>
 
-    <div class="notification" id="custom-alert">
-      <p id="alert-message"></p>
-    </div>
+      <div class="notification" id="custom-alert">
+        <p id="alert-message"></p>
+      </div>
 
-    <script src="tictactoe.js"></script>
+      <script src="tictactoe.js"></script>
 
-    <div class="audio">
-      <p style="color: white; text-align: center">Background Music :</p>
-      <audio controls autoplay id="bg-sound">
-        <source
-          src="media/Circus Tent - Netherworld Shanty - Kevin MacLeod.mp3"
-          type="audio/mpeg"
-        />
-        Your browser does not support the audio element.
-      </audio>
-      <audio
-        id="click-sound"
-        src="media/Wooden Bat Hits Baseball Run.mp3"
-        preload="auto"
-      ></audio>
-      <audio
-        id="win-sound"
-        src="media/we are the champion.mp3"
-        preload="auto"
-      ></audio>
-    </div>
-    <button onclick="toggleMute()">Mute Music</button>
+      <div class="audio">
+        <p style="color: white; text-align: center">Background Music :</p>
+        <audio autoplay id="bg-sound">
+          <source
+            src="media/Circus Tent - Netherworld Shanty - Kevin MacLeod.mp3"
+            type="audio/mpeg"
+          />
+          Your browser does not support the audio element.
+        </audio>
+        <audio
+          id="click-sound"
+          src="media/Wooden Bat Hits Baseball Run.mp3"
+          preload="auto"
+        ></audio>
+        <audio
+          id="win-sound"
+          src="media/we are the champion.mp3"
+          preload="auto"
+        ></audio>
+      </div>
+      <button onclick="toggleMute()" id="mute-button" class="mute-button">
+        Mute Music
+      </button>
+      <div class="winner">Congratulations, You Win!</div>
+      <script src="partikel.js"></script>
+    </main>
 
-    <!-- <button class="start-btn">Start Winner Animation</button> -->
-    <div class="winner">Congratulations, You Win!</div>
-    <script src="partikel.js"></script>
+    <footer>
+      <p>&copy; 2024 Dadang Harianto. All rights reserved.</p>
+      <p>
+        Contact:
+        <a href="mailto:dunk2may@gmail.com.com">dunk2may@gmail.com</a>
+      </p>
+    </footer>
   </body>
 </html>
