@@ -103,3 +103,25 @@ function resetGame() {
     win_sound.currentTime = 0; // Reset the sound to the beginning
   }
 }
+
+// Function to toggle mute and unmute
+function toggleMute() {
+  // Variables to store the background and win sound elements
+  const bgSound = document.getElementById("bg-sound");
+  const winSound = document.getElementById("win-sound");
+  const muteButton = document.getElementById("mute-button");
+
+  // Check if the audio is muted
+  if (bgSound.muted) {
+    bgSound.muted = false;
+    winSound.muted = false;
+    muteButton.textContent = "Mute Music"; // Change button text
+  } else {
+    bgSound.muted = true;
+    winSound.muted = true;
+    muteButton.textContent = "Unmute Music"; // Change button text
+  }
+}
+
+// Event listener for the mute button
+// document.getElementById("mute-button").addEventListener("click", toggleMute);

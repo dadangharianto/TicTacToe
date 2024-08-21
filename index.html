@@ -88,6 +88,12 @@
           opacity: 0;
         }
       }
+
+      .audio {
+        position: absolute;
+        top: 80%;
+        left: 5%;
+      }
     </style>
   </head>
   <body>
@@ -110,9 +116,13 @@
 
     <script src="tictactoe.js"></script>
 
-    <div>
+    <div class="audio">
+      <p style="color: white; text-align: center">Background Music :</p>
       <audio controls autoplay id="bg-sound">
-        <source src="media/HTML - Riot.mp3" type="audio/mpeg" />
+        <source
+          src="media/Circus Tent - Netherworld Shanty - Kevin MacLeod.mp3"
+          type="audio/mpeg"
+        />
         Your browser does not support the audio element.
       </audio>
       <audio
@@ -126,8 +136,9 @@
         preload="auto"
       ></audio>
     </div>
+    <button onclick="toggleMute()">Mute Music</button>
 
-    <button class="start-btn">Start Winner Animation</button>
+    <!-- <button class="start-btn">Start Winner Animation</button> -->
     <div class="winner">Congratulations, You Win!</div>
     <script src="partikel.js"></script>
   </body>
