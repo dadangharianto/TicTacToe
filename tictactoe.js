@@ -90,23 +90,30 @@ function announceDraw() {
 
 // Function to reset the game
 function resetGame() {
-  board = ["", "", "", "", "", "", "", "", ""];
-  currentPlayer = "X";
-  gameActive = true;
-  document.querySelectorAll(".cell").forEach((cell) => (cell.textContent = ""));
+  let confirmation = confirm("Apakah Anda yakin ingin mereset permainan?");
+  if (confirmation) {
+    board = ["", "", "", "", "", "", "", "", ""];
+    currentPlayer = "X";
+    gameActive = true;
+    document
+      .querySelectorAll(".cell")
+      .forEach((cell) => (cell.textContent = ""));
 
-  var bg_sound = document.getElementById("bg-sound");
-  bg_sound.play(); // Pause the background sound
-  var win_sound = document.getElementById("win-sound");
-  if (win_sound) {
-    win_sound.pause(); // Pause the background sound
-    win_sound.currentTime = 0; // Reset the sound to the beginning
+    var bg_sound = document.getElementById("bg-sound");
+    bg_sound.play(); // Pause the background sound
+    var win_sound = document.getElementById("win-sound");
+    if (win_sound) {
+      win_sound.pause(); // Pause the background sound
+      win_sound.currentTime = 0; // Reset the sound to the beginning
+    }
+
+    var alertBox = document.getElementById("custom-alert");
+    alertBox.style.display = "none";
+
+    resetParticles();
+  } else {
+    alert("Reset permainan dibatalkan.");
   }
-
-  var alertBox = document.getElementById("custom-alert");
-  alertBox.style.display = "none";
-
-  resetParticles();
 }
 
 // Function to toggle mute and unmute
